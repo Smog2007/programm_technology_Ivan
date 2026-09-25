@@ -1,4 +1,6 @@
-﻿namespace bank;
+﻿using System.Text;
+
+namespace bank;
 
 internal class BankAccount
 {
@@ -41,7 +43,7 @@ internal class BankAccount
         {
             throw new ArgumentOutOfRangeException(nameof(amount), "Amount off withdrawal must be positive");
         }
-        
+
         if (Balance < amount)
         {
             throw new InvalidOperationException("Not sufficient rubls for this withdrawal");
@@ -49,5 +51,20 @@ internal class BankAccount
 
         var withdrawal = new Transaction(-amount, date, note);
         _allTransactions.Add(withdrawal);
+    }
+    public string GetAccountHistory()
+    {
+        var report = new StringBuilder();
+
+        decimal balance = 0;
+        report.AppendLine("Data\t\tAmount\tBalance\tNote");
+        foreach (var item in _allTransactions)
+        {
+            balance += item.Amount;
+            report.AppendLine($"" +
+                $"{item.Date.ToShortDateString()}\t" +
+                $"{item.Amount}\t{balance}\t{item.Note}");
+        }
+        return report.ToString();
     }
 }
