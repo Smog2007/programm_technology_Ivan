@@ -67,4 +67,17 @@ internal class BankAccount
         }
         return report.ToString();
     }
+
+    public virtual void PerformMonthAndTransaction()
+    {
+        
+    }
+
+    // Переопределяем метод, который унаследовали от object
+    // этот метод должен возвращать строку с состоянием обьекта
+    public override string ToString()
+        => $"Type: {GetType().Name}\t" +
+        $"Owner: {Owner}\t" +
+        $"Number of account: {Number}\t" +
+        $"Balance: {Balance}";
 }
