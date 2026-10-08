@@ -1,6 +1,6 @@
 ﻿namespace bank;
 // мы создали неизменемый тип данных благодаря record
-internal record Transaction(decimal Amount, DateTime Date, string Note);
+public record Transaction(decimal Amount, DateTime Date, string Note);
 
 //internal record Transaction
 //{
