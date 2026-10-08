@@ -13,7 +13,28 @@
             account1.MakeWithdrawal(100, DateTime.UtcNow, "vse ploxo");
             Console.WriteLine(account1.Balance);
 
+            InterestEarningAccount interest = new InterestEarningAccount("Ivan", 1000);
+            interest.PerformMonthAndTransaction();
+
             Console.WriteLine(account1.GetAccountHistory());
+
+            LineOfCreditAccount lineOfCredit = new LineOfCreditAccount("Ivan", 1000, 1000m);
+            lineOfCredit.MakeWithdrawal(200m, DateTime.UtcNow, "credit");
+
+            GiftCardAccount giftCard = new GiftCardAccount("Ivan", 1000m, 5000m);
+
+            List<BankAccount> accounts = new List<BankAccount>();
+            accounts.Add(account1);
+            accounts.Add(interest);
+            accounts.Add(lineOfCredit);
+            accounts.Add(giftCard);
+
+            foreach (BankAccount account in accounts)
+            {
+                Console.WriteLine(account);
+                account.PerformMonthAndTransaction();
+                Console.WriteLine(account.GetAccountHistory());
+            }
 
             try
             {
