@@ -1,13 +1,14 @@
 ﻿namespace bank
 {
-    public class InterestEarningAccount: BankAccount
+
+    public class InterestEarningAccount : BankAccount
     {
-        public InterestEarningAccount(string name, decimal initialBalance): base(name, initialBalance)
+        public InterestEarningAccount(string name, decimal initialBalance) : base(name, initialBalance)
         {
 
         }
 
-        public virtual void PerformMonthAndTransaction()
+        public override void PerformMonthAndTransaction()
         {
             if (Balance > 500m)
             {

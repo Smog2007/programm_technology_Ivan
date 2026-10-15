@@ -53,6 +53,23 @@
             Console.WriteLine(interestEarning);
             Console.WriteLine(interestEarning.GetAccountHistory());
 
+            // ЗАДАЧА 1: проверка статусов
+            Console.WriteLine("\n=== Проверка статусов ===");
+
+            BankAccount regular = new BankAccount("Regular Guy", 100_000m) { Status = ClientStatus.Regular };
+            regular.PerformMonthAndTransaction();
+            Console.WriteLine(regular);
+            Console.WriteLine(regular.GetAccountHistory());
+
+            BankAccount premium = new BankAccount("Premium Guy", 100_000m) { Status = ClientStatus.Premium };
+            premium.PerformMonthAndTransaction();
+            Console.WriteLine(premium);
+
+            BankAccount vip = new BankAccount("VIP Guy", 100_000m) { Status = ClientStatus.Vip };
+            vip.MakeWithdrawal(10_000m, DateTime.UtcNow, "Покупка");
+            vip.PerformMonthAndTransaction();
+            Console.WriteLine(vip);
+            Console.WriteLine(vip.GetAccountHistory());
         }
     }
 }
