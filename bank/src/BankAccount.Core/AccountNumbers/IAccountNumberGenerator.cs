@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace BankAccounts.Core.AccountNumbers;
 
-namespace BankAccount.Core.AccountNumbers
+// Генерация номеров - отдельная ответственность, не должна быть внутри счета (SRP)
+public interface IAccountNumberGenerator
 {
-    internal class IAccountNumberGenerator
-    {
-    }
+    string Next();
 }

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BankAccounts.Core.Accounts;
 
-namespace BankAccount.Core.MonthEnd
+namespace BankAccounts.Core.MonthEnd;
+
+// Каждое правило - отдельный класс. 
+// Новые правила добавляются без изменения старых (OCP, SRP)
+public interface IMonthEndRule
 {
-    internal class IMonthEndRule
-    {
-    }
+    void Apply(IAccountOperations account, DateTime asOf);
 }
